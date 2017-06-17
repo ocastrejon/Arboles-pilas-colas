@@ -42,15 +42,12 @@ namespace Operaciones_con_Arboles
                 {
                     _raiz.hizq = _raiz.anterior;
                     _raiz.anterior = _raiz.hizq.anterior;
-
                     if (_raiz.anterior != null)
                         _raiz.anterior.siguiente = _raiz;
-
                     _raiz.hder = _raiz.siguiente;
                     _raiz.siguiente = _raiz.hder.siguiente;
                     _raiz.hder.siguiente = null;
                     _raiz.hder.anterior = null;
-
                     if (_raiz.siguiente != null)
                         _raiz.siguiente.anterior = _raiz;
                 }
@@ -62,20 +59,16 @@ namespace Operaciones_con_Arboles
         {
             if (_raiz != null)
                 return InOrder(_raiz);
-
             return string.Empty;
         }
         private string InOrder(Nodo raiz)
         {
             string res = string.Empty;
-
             if (raiz != null)
             {
                 if (raiz.hizq != null)
                     res += InOrder(raiz.hizq);
-
                 res += raiz.ToString();
-
                 if (raiz.hder != null)
                     res += InOrder(raiz.hder);
             }
@@ -85,25 +78,19 @@ namespace Operaciones_con_Arboles
         public string PreOrder()
         {
             _pila.limpiar();
-
             if (_raiz != null)
                 return PreOrden(_raiz);
-
             return string.Empty;
         }
         private string PreOrden(Nodo raiz)
         {
             string res = string.Empty;
-
             if (raiz != null)
             {
                 res += raiz.ToString();
                 _pila.push(raiz);
-
-
                 if (raiz.hizq != null)
                     res += PreOrden(raiz.hizq);
-
                 if (raiz.hder != null)
                     res += PreOrden(raiz.hder);
             }
@@ -113,26 +100,20 @@ namespace Operaciones_con_Arboles
         public string PostOrder()
         {
             _cola.limpiar();
-
             if (_raiz != null)
                 return PostOrden(_raiz);
-
             CalculoPostOrder();
-
             return string.Empty;
         }
         private string PostOrden(Nodo raiz)
         {
             string res = string.Empty;
-
             if (raiz != null)
             {
                 if (raiz.hizq != null)
                     res += PostOrden(raiz.hizq);
-
                 if (raiz.hder != null)
                     res += PostOrden(raiz.hder);
-
                 res += raiz.ToString();
                 _cola.enqueue(raiz);
             }
@@ -142,7 +123,6 @@ namespace Operaciones_con_Arboles
         public double CalculoPostOrder()
         {
             LIFO auxCola = new LIFO();
-
             return Convert.ToDouble(CalculoPostOrder(_cola, auxCola).datos);
         }
         private Nodo CalculoPostOrder(FIFO cola, LIFO auxCola)
@@ -150,20 +130,17 @@ namespace Operaciones_con_Arboles
             Nodo temp = new Nodo("");
             double num1 = 0;
             double num2 = 0;
-
             if (cola.peek() != null)
             {
                 if (char.IsNumber(Convert.ToChar(cola.peek().datos)))
                 {
                     auxCola.push(cola.dequeue());
-
                     temp = CalculoPostOrder(cola, auxCola);
                 }
                 else
                 {
                     num1 = Convert.ToDouble(auxCola.pop().datos.ToString());
                     num2 = Convert.ToDouble(auxCola.pop().datos.ToString());
-
                     if (cola.peek().datos.Equals("+"))
                         temp.datos = Convert.ToString(num2 + num1);
                     else if (cola.peek().datos.Equals("-"))
@@ -172,10 +149,8 @@ namespace Operaciones_con_Arboles
                         temp.datos = Convert.ToString(num2 * num1);
                     else if (cola.peek().datos.Equals("/"))
                         temp.datos = Convert.ToString(num2 / num1);
-
                     cola.dequeue();
                     auxCola.push(temp);
-
                     if (cola.peek() != null)
                         temp = CalculoPostOrder(cola, auxCola);
                     else
@@ -188,7 +163,6 @@ namespace Operaciones_con_Arboles
         public double CalculoPreOrder()
         {
             LIFO auxPila = new LIFO();
-
             return Convert.ToDouble(CalculoPreOrder(_pila, auxPila).datos);
         }
         private Nodo CalculoPreOrder(LIFO pila, LIFO auxPila)
@@ -196,20 +170,17 @@ namespace Operaciones_con_Arboles
             Nodo temp = new Nodo("");
             double num1 = 0;
             double num2 = 0;
-
             if (pila.peek() != null)
             {
                 if (char.IsNumber(Convert.ToChar(pila.peek().datos)))
                 {
                     auxPila.push(pila.pop());
-
                     temp = CalculoPreOrder(pila, auxPila);
                 }
                 else
                 {
                     num1 = Convert.ToDouble(auxPila.pop().datos.ToString());
                     num2 = Convert.ToDouble(auxPila.pop().datos.ToString());
-
                     if (pila.peek().datos.Equals("+"))
                         temp.datos = Convert.ToString(num1 + num2);
                     else if (pila.peek().datos.Equals("-"))
@@ -218,10 +189,8 @@ namespace Operaciones_con_Arboles
                         temp.datos = Convert.ToString(num1 * num2);
                     else if (pila.peek().datos.Equals("/"))
                         temp.datos = Convert.ToString(num1 / num2);
-
                     pila.pop();
                     auxPila.push(temp);
-
                     if (pila.peek() != null)
                         temp = CalculoPreOrder(pila, auxPila);
                     else

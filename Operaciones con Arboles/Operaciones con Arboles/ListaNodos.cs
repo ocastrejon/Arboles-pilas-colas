@@ -10,10 +10,8 @@ namespace Operaciones_con_Arboles
     {
         private Nodo _inicio;
         public Nodo inicio { get { return _inicio; } }
-
         private Nodo _ultimo;
         public Nodo ultimo { get { return _ultimo; } }
-
         private int _aux;
         public int aux { get { return _aux; } set { _aux = value; } }
 

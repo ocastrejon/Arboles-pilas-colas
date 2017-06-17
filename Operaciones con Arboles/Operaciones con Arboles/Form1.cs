@@ -29,15 +29,10 @@ namespace Operaciones_con_Arboles
         {
             arbol = new Arbol(llst);
             llst.limpiar();
-
             txtBxInOrder.Text = arbol.InOrder();
-
             txtBxPreOrder.Text = arbol.PreOrder();
-            //txtBxMostrarPila.Text = binaryTree.ToStringStack();
             txtBxPreOrderRes.Text = Convert.ToString(arbol.CalculoPreOrder());
-
             txtBxPostOrder.Text = arbol.PostOrder();
-            //txtMostrarCola.Text = binaryTree.ToStringQueue();
             txtBxPostOrderRes.Text = Convert.ToString(arbol.CalculoPostOrder());
         }
 

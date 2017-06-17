@@ -29,7 +29,7 @@ namespace Operaciones_con_Arboles
 
         public override string ToString()
         {
-            return Convert.ToString(_datos);
+            return datos.ToString();
         }
     }
 }

@@ -32,7 +32,6 @@ namespace Operaciones_con_Arboles
         {
             Nodo n = _ln.ultimo;
             _ln.eliminarUltimo();
-
             return n;
         }
         
@@ -45,7 +44,6 @@ namespace Operaciones_con_Arboles
         {
             string res = "";
             Nodo n = _ln.ultimo;
-
             while (n != null)
             {
                 res += n.datos + Environment.NewLine;
